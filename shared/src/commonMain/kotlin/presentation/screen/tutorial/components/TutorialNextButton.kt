@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.sp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-import presentation.screen.tutorial.TutorialScreen
 import presentation.theme.FieryRose
 import presentation.theme.White
 import rememberTextStyle
@@ -48,9 +47,9 @@ fun TutorialNextButton(
     ) {
         Text(
             text = stringResource(MR.strings.general_next),
-            fontSize = 15.sp,
             color = White,
             style = textStyle.copy(
+                fontSize = 15.sp,
                 fontWeight = FontWeight.SemiBold,
                 lineHeight = 20.sp
             ),

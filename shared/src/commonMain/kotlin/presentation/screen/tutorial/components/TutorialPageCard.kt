@@ -1,5 +1,7 @@
 package presentation.screen.tutorial.components
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -7,7 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import rememberStyleSheet
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TutorialPageCard(
     modifier: Modifier = Modifier,
@@ -58,16 +61,18 @@ fun TutorialPageCard(
                 )
             }
 
-            Spacer(modifier = Modifier.weight(1f))
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
+            AnimatedContent(
+                modifier = Modifier.weight(1f),
+                targetState = content,
             ) {
-                content(this)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    it(this)
+                }
             }
-
-            Spacer(modifier = Modifier.weight(1f))
 
             actionButtons?.let { buttons ->
                 Row(

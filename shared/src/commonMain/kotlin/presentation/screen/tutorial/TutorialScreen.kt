@@ -26,16 +26,13 @@ class TutorialScreen : Screen {
         val uiState by viewModel.uiState.collectAsState()
         val navigator = LocalNavigator.current
         val scope = rememberCoroutineScope()
-
         val pagerState = rememberPagerState(
-            pageCount = { 2 }
+            pageCount = { TutorialPage.PageIndex.entries.size }
         )
 
         val pages: List<TutorialPage> = remember {
             listOf(
                 TutorialPage.Page1(
-                    pageCount = pagerState.pageCount,
-                    currentPage = pagerState.currentPage,
                     onNextClicked = {
                         scope.launch {
                             viewModel.onNext(pagerState = pagerState)
@@ -48,8 +45,6 @@ class TutorialScreen : Screen {
                     }
                 ),
                 TutorialPage.Page2(
-                    pageCount = pagerState.pageCount,
-                    currentPage = pagerState.currentPage,
                     onNextClicked = {
                         scope.launch {
                             viewModel.onNext(pagerState = pagerState)
@@ -59,6 +54,14 @@ class TutorialScreen : Screen {
                         scope.launch {
                             viewModel.onSkip(pagerState = pagerState)
                         }
+                    }
+                ),
+                TutorialPage.Page3(
+                    onLoginClicked = {
+                        // TODO().
+                    },
+                    onCreateAccountClicked = {
+                        // TODO().
                     }
                 )
             )

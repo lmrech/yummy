@@ -17,20 +17,22 @@ import androidx.compose.ui.unit.sp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
+import presentation.core.components.AppButton
+import presentation.theme.PaperHearts
 import rememberStyleSheet
 import rememberTextStyle
 
 sealed class TutorialPage(
+    val pageIndex: PageIndex,
     val background: @Composable () -> Unit,
     val actionButtons: (@Composable RowScope.() -> Unit)? = null,
     val content: @Composable ColumnScope.() -> Unit,
 ) {
     data class Page1(
-        val pageCount: Int,
-        val currentPage: Int,
         val onSkipClicked: () -> Unit,
         val onNextClicked: () -> Unit
     ) : TutorialPage(
+        pageIndex = PageIndex.PAGE_1,
         background = {
             Image(
                 modifier = Modifier
@@ -57,9 +59,9 @@ sealed class TutorialPage(
 
             Text(
                 text = stringResource(MR.strings.tutorial_page_1_title),
-                fontSize = 18.sp,
                 color = styleSheet.colorScheme.colorTextPrimary,
                 style = textStyle.copy(
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     lineHeight = 24.sp
                 ),
@@ -70,9 +72,9 @@ sealed class TutorialPage(
 
             Text(
                 text = stringResource(MR.strings.tutorial_page_1_description),
-                fontSize = 16.sp,
                 color = styleSheet.colorScheme.colorTextPrimary,
                 style = textStyle.copy(
+                    fontSize = 16.sp,
                     lineHeight = 21.sp
                 ),
                 textAlign = TextAlign.Start
@@ -81,11 +83,10 @@ sealed class TutorialPage(
     )
 
     data class Page2(
-        val pageCount: Int,
-        val currentPage: Int,
         val onSkipClicked: () -> Unit,
         val onNextClicked: () -> Unit
     ) : TutorialPage(
+        pageIndex = PageIndex.PAGE_2,
         background = {
             Image(
                 modifier = Modifier
@@ -112,9 +113,9 @@ sealed class TutorialPage(
 
             Text(
                 text = stringResource(MR.strings.tutorial_page_2_title),
-                fontSize = 18.sp,
                 color = styleSheet.colorScheme.colorTextPrimary,
                 style = textStyle.copy(
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     lineHeight = 24.sp
                 ),
@@ -125,13 +126,49 @@ sealed class TutorialPage(
 
             Text(
                 text = stringResource(MR.strings.tutorial_page_2_description),
-                fontSize = 16.sp,
                 color = styleSheet.colorScheme.colorTextPrimary,
                 style = textStyle.copy(
+                    fontSize = 16.sp,
                     lineHeight = 21.sp
                 ),
                 textAlign = TextAlign.Start
             )
         }
     )
+
+    data class Page3(
+        val onLoginClicked: () -> Unit,
+        val onCreateAccountClicked: () -> Unit
+    ) : TutorialPage(
+        pageIndex = PageIndex.PAGE_3,
+        background = {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                painter = painterResource(MR.images.bg_tutorial_page_2),
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth
+            )
+        },
+        content = {
+            AppButton(
+                text = stringResource(MR.strings.tutorial_page_3_button_1),
+                onClick = onLoginClicked
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            AppButton(
+                text = stringResource(MR.strings.tutorial_page_3_button_2),
+                backgroundColor = PaperHearts,
+                onClick = onLoginClicked
+            )
+        }
+    )
+
+    enum class PageIndex {
+        PAGE_1,
+        PAGE_2,
+        PAGE_3
+    }
 }
