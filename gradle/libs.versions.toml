@@ -1,0 +1,23 @@
+[versions]
+voyager = "1.0.0-rc10"
+mvvm-core = "0.13.1"
+koin = "3.4.3"
+koin-compose = "1.0.4"
+resources = "0.23.0"
+
+[libraries]
+voyager-navigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "voyager" }
+voyager-tab-navigator = { group = "cafe.adriel.voyager", name = "voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitions", version.ref = "voyager" }
+
+mvvm-core = { group = "dev.icerock.moko", name = "mvvm-core", version.ref = "mvvm-core" }
+resources = { group = "dev.icerock.moko", name = "resources", version.ref = "resources" }
+resources-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "resources" }
+
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin-compose" }
+
+[plugins]
+
+[bundles]

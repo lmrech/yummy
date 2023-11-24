@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="general_skip">Pular</string>
+    <string name="general_next">Próximo</string>
+
+    <string name="tutorial_page_1_title">Procurando onde comer?</string>
+    <string name="tutorial_page_1_description">Aqui você pode encontrar os restaurantes mais avaliados da cidade e escolher o ideal para sua fome</string>
+</resources>
