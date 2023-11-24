@@ -1,66 +1,137 @@
 package presentation.screen.tutorial.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import presentation.screen.tutorial.TutorialScreen
-import presentation.theme.PinkPerfume
-import presentation.theme.Transparent
+import androidx.compose.ui.unit.sp
+import com.icerockdev.library.MR
+import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
+import rememberStyleSheet
+import rememberTextStyle
 
-@Composable
-fun TutorialScreen.TutorialPage(
-    pageCount: Int,
-    currentPage: Int,
-    background: @Composable BoxScope.() -> Unit,
-    actionButtons: (@Composable RowScope.() -> Unit)? = null,
-    content: @Composable ColumnScope.() -> Unit,
+sealed class TutorialPage(
+    val background: @Composable () -> Unit,
+    val actionButtons: (@Composable RowScope.() -> Unit)? = null,
+    val content: @Composable ColumnScope.() -> Unit,
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Box {
-            background(this)
-        }
+    data class Page1(
+        val pageCount: Int,
+        val currentPage: Int,
+        val onSkipClicked: () -> Unit,
+        val onNextClicked: () -> Unit
+    ) : TutorialPage(
+        background = {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                painter = painterResource(MR.images.bg_tutorial_page_1),
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth
+            )
+        },
+        actionButtons = {
+            TutorialSkipButton(
+                onClick = onSkipClicked
+            )
 
-        Box(
-            modifier = Modifier
-                .align(
-                    alignment = Alignment.TopCenter
-                )
-                .height(256.dp)
-                .fillMaxWidth()
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            PinkPerfume.copy(
-                                alpha = 0.85f
-                            ),
-                            Transparent
-                        )
-                    )
-                )
-        )
+            Spacer(modifier = Modifier.weight(1f))
 
-        TutorialPageCard(
-            modifier = Modifier
-                .align(
-                    alignment = Alignment.BottomCenter
+            TutorialNextButton(
+                onClick = onNextClicked
+            )
+        },
+        content = {
+            val styleSheet = rememberStyleSheet()
+            val textStyle = rememberTextStyle()
+
+            Text(
+                text = stringResource(MR.strings.tutorial_page_1_title),
+                fontSize = 18.sp,
+                color = styleSheet.colorScheme.colorTextPrimary,
+                style = textStyle.copy(
+                    fontWeight = FontWeight.Bold,
+                    lineHeight = 24.sp
                 ),
-            pageCount = pageCount,
-            currentPage = currentPage,
-            actionButtons = actionButtons,
-            content = content
-        )
-    }
+                textAlign = TextAlign.Start
+            )
+
+            Spacer(modifier = Modifier.height(2.dp))
+
+            Text(
+                text = stringResource(MR.strings.tutorial_page_1_description),
+                fontSize = 16.sp,
+                color = styleSheet.colorScheme.colorTextPrimary,
+                style = textStyle.copy(
+                    lineHeight = 21.sp
+                ),
+                textAlign = TextAlign.Start
+            )
+        }
+    )
+
+    data class Page2(
+        val pageCount: Int,
+        val currentPage: Int,
+        val onSkipClicked: () -> Unit,
+        val onNextClicked: () -> Unit
+    ) : TutorialPage(
+        background = {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                painter = painterResource(MR.images.bg_tutorial_page_2),
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth
+            )
+        },
+        actionButtons = {
+            TutorialSkipButton(
+                onClick = onSkipClicked
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            TutorialNextButton(
+                onClick = onNextClicked
+            )
+        },
+        content = {
+            val styleSheet = rememberStyleSheet()
+            val textStyle = rememberTextStyle()
+
+            Text(
+                text = stringResource(MR.strings.tutorial_page_2_title),
+                fontSize = 18.sp,
+                color = styleSheet.colorScheme.colorTextPrimary,
+                style = textStyle.copy(
+                    fontWeight = FontWeight.Bold,
+                    lineHeight = 24.sp
+                ),
+                textAlign = TextAlign.Start
+            )
+
+            Spacer(modifier = Modifier.height(2.dp))
+
+            Text(
+                text = stringResource(MR.strings.tutorial_page_2_description),
+                fontSize = 16.sp,
+                color = styleSheet.colorScheme.colorTextPrimary,
+                style = textStyle.copy(
+                    lineHeight = 21.sp
+                ),
+                textAlign = TextAlign.Start
+            )
+        }
+    )
 }

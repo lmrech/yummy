@@ -17,11 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import presentation.screen.tutorial.TutorialScreen
 import rememberStyleSheet
 
 @Composable
-fun TutorialScreen.TutorialPageCard(
+fun TutorialPageCard(
     modifier: Modifier = Modifier,
     pageCount: Int,
     currentPage: Int,

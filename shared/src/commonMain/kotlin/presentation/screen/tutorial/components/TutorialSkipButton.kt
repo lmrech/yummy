@@ -11,12 +11,11 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.sp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.stringResource
-import presentation.screen.tutorial.TutorialScreen
 import presentation.theme.Black
 import rememberTextStyle
 
 @Composable
-fun TutorialScreen.TutorialSkipButton(
+fun TutorialSkipButton(
     onClick: () -> Unit
 ) {
     val textStyle = rememberTextStyle()

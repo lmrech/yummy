@@ -25,7 +25,7 @@ import presentation.theme.White
 import rememberTextStyle
 
 @Composable
-fun TutorialScreen.TutorialNextButton(
+fun TutorialNextButton(
     onClick: () -> Unit
 ) {
     val textStyle = rememberTextStyle()

@@ -5,4 +5,7 @@
 
     <string name="tutorial_page_1_title">Procurando onde comer?</string>
     <string name="tutorial_page_1_description">Aqui você pode encontrar os restaurantes mais avaliados da cidade e escolher o ideal para sua fome</string>
+    <string name="tutorial_page_2_title">Compartilhe sua experiência!</string>
+    <string name="tutorial_page_2_description">Ajude amigos a encontrar os restaurantes que você mais gosta compartilhando um pouco da sua experiência</string>
+
 </resources>

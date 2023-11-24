@@ -11,12 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import presentation.screen.tutorial.TutorialScreen
 import presentation.theme.PaperHearts
 import presentation.theme.PinkPerfume
 
 @Composable
-fun TutorialScreen.TutorialPageIndicator(
+fun TutorialPageIndicator(
     modifier: Modifier = Modifier,
     pageCount: Int,
     currentPage: Int,
