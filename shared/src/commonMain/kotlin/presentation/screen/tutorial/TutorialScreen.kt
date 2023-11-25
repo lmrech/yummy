@@ -1,6 +1,7 @@
 package presentation.screen.tutorial
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
@@ -15,6 +16,8 @@ import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import presentation.core.AppScreen
 import presentation.core.AppStatusBar
+import presentation.screen.create_account.CreateAccountScreen
+import presentation.screen.tutorial.components.TutorialBackgroundGradient
 import presentation.screen.tutorial.components.TutorialPage
 import presentation.screen.tutorial.components.TutorialPageLayout
 
@@ -61,7 +64,7 @@ class TutorialScreen : Screen {
                         // TODO().
                     },
                     onCreateAccountClicked = {
-                        // TODO().
+                        navigator?.replaceAll(CreateAccountScreen())
                     }
                 )
             )
@@ -78,11 +81,15 @@ class TutorialScreen : Screen {
                         state = pagerState,
                         verticalAlignment = Alignment.Top,
                     ) {
-                        pages.get(it).background()
+                        Box {
+                            pages[it].background()
+                            TutorialBackgroundGradient()
+                            pages[it].overlay?.invoke()
+                        }
                     }
                 },
-                actionButtons = pages.get(pagerState.currentPage).actionButtons,
-                content = pages.get(pagerState.currentPage).content
+                cardActionButtons = pages[pagerState.currentPage].cardActionButtons,
+                cardContent = pages[pagerState.currentPage].cardContent
             )
         }
     }

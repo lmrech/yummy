@@ -1,11 +1,13 @@
 package presentation.screen.tutorial.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,14 +21,17 @@ import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import presentation.core.components.AppButton
 import presentation.theme.PaperHearts
+import presentation.theme.White
+import rememberPlatform
 import rememberStyleSheet
 import rememberTextStyle
 
 sealed class TutorialPage(
     val pageIndex: PageIndex,
     val background: @Composable () -> Unit,
-    val actionButtons: (@Composable RowScope.() -> Unit)? = null,
-    val content: @Composable ColumnScope.() -> Unit,
+    val overlay: (@Composable () -> Unit)? = null,
+    val cardActionButtons: (@Composable RowScope.() -> Unit)? = null,
+    val cardContent: @Composable ColumnScope.() -> Unit,
 ) {
     data class Page1(
         val onSkipClicked: () -> Unit,
@@ -42,7 +47,7 @@ sealed class TutorialPage(
                 contentScale = ContentScale.FillWidth
             )
         },
-        actionButtons = {
+        cardActionButtons = {
             TutorialSkipButton(
                 onClick = onSkipClicked
             )
@@ -53,7 +58,7 @@ sealed class TutorialPage(
                 onClick = onNextClicked
             )
         },
-        content = {
+        cardContent = {
             val styleSheet = rememberStyleSheet()
             val textStyle = rememberTextStyle()
 
@@ -96,7 +101,7 @@ sealed class TutorialPage(
                 contentScale = ContentScale.FillWidth
             )
         },
-        actionButtons = {
+        cardActionButtons = {
             TutorialSkipButton(
                 onClick = onSkipClicked
             )
@@ -107,7 +112,7 @@ sealed class TutorialPage(
                 onClick = onNextClicked
             )
         },
-        content = {
+        cardContent = {
             val styleSheet = rememberStyleSheet()
             val textStyle = rememberTextStyle()
 
@@ -145,12 +150,48 @@ sealed class TutorialPage(
             Image(
                 modifier = Modifier
                     .fillMaxWidth(),
-                painter = painterResource(MR.images.bg_tutorial_page_2),
+                painter = painterResource(MR.images.bg_tutorial_page_3),
                 contentDescription = null,
                 contentScale = ContentScale.FillWidth
             )
         },
-        content = {
+        overlay = {
+            val platform = rememberPlatform()
+            val textStyle = rememberTextStyle()
+
+            Column(
+                modifier = Modifier
+                    .padding(
+                        horizontal = 24.dp
+                    )
+            ) {
+                Spacer(
+                    modifier = Modifier
+                        .height(
+                            height = platform.insets.top
+                        )
+                )
+
+                Spacer(
+                    modifier = Modifier
+                        .height(
+                            height = 11.dp
+                        )
+                )
+
+                Text(
+                    text = stringResource(MR.strings.tutorial_page_3_title),
+                    color = White,
+                    style = textStyle.copy(
+                        fontSize = 35.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        lineHeight = 42.sp
+                    ),
+                    textAlign = TextAlign.Start
+                )
+            }
+        },
+        cardContent = {
             AppButton(
                 text = stringResource(MR.strings.tutorial_page_3_button_1),
                 onClick = onLoginClicked
@@ -161,7 +202,7 @@ sealed class TutorialPage(
             AppButton(
                 text = stringResource(MR.strings.tutorial_page_3_button_2),
                 backgroundColor = PaperHearts,
-                onClick = onLoginClicked
+                onClick = onCreateAccountClicked
             )
         }
     )

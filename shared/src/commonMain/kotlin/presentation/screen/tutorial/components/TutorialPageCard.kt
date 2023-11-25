@@ -1,7 +1,6 @@
 package presentation.screen.tutorial.components
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,7 +20,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import rememberStyleSheet
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TutorialPageCard(
     modifier: Modifier = Modifier,
