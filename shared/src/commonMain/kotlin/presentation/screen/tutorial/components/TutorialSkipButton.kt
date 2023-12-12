@@ -30,8 +30,8 @@ fun TutorialSkipButton(
             text = stringResource(MR.strings.general_skip),
             color = Black,
             style = textStyle.copy(
+                fontWeight = FontWeight.W600,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.SemiBold,
                 lineHeight = 21.sp,
                 textDecoration = TextDecoration.Underline
             ),

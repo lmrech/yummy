@@ -1,6 +1,7 @@
 package presentation.core
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import domain.platform.Platform
@@ -19,6 +21,8 @@ import rememberStyleSheet
 @Composable
 fun AppScreen(
     modifier: Modifier = Modifier,
+    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     styleSheet: StyleSheet = rememberStyleSheet(),
     platform: Platform = rememberPlatform(),
     statusBar: AppStatusBar = AppStatusBar.Visible(
@@ -51,7 +55,9 @@ fun AppScreen(
                 .weight(1f)
         ) {
             Column(
-                modifier = modifier
+                modifier = modifier,
+                verticalArrangement = verticalArrangement,
+                horizontalAlignment = horizontalAlignment
             ) {
                 content(this)
             }

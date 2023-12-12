@@ -49,8 +49,8 @@ fun TutorialNextButton(
             text = stringResource(MR.strings.general_next),
             color = White,
             style = textStyle.copy(
+                fontWeight = FontWeight.W600,
                 fontSize = 15.sp,
-                fontWeight = FontWeight.SemiBold,
                 lineHeight = 20.sp
             ),
             textAlign = TextAlign.Start

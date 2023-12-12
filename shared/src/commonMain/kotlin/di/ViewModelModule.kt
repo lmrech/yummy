@@ -1,8 +1,9 @@
 package di
 
 import org.koin.dsl.module
-import presentation.screen.create_account.CreateAccountViewModel
 import presentation.screen.home.HomeViewModel
+import presentation.screen.sign_in.SignInViewModel
+import presentation.screen.sign_up.SignUpViewModel
 import presentation.screen.splash.SplashViewModel
 import presentation.screen.tutorial.TutorialViewModel
 import viewModelDefinition
@@ -17,7 +18,11 @@ fun viewModelModule() = module {
     }
 
     viewModelDefinition {
-        CreateAccountViewModel()
+        SignUpViewModel()
+    }
+
+    viewModelDefinition {
+        SignInViewModel()
     }
 
     viewModelDefinition {

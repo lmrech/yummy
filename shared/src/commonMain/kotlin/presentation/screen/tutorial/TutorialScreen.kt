@@ -16,7 +16,8 @@ import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import presentation.core.AppScreen
 import presentation.core.AppStatusBar
-import presentation.screen.create_account.CreateAccountScreen
+import presentation.screen.sign_in.SignInScreen
+import presentation.screen.sign_up.SignUpScreen
 import presentation.screen.tutorial.components.TutorialBackgroundGradient
 import presentation.screen.tutorial.components.TutorialPage
 import presentation.screen.tutorial.components.TutorialPageLayout
@@ -60,11 +61,11 @@ class TutorialScreen : Screen {
                     }
                 ),
                 TutorialPage.Page3(
-                    onLoginClicked = {
-                        // TODO().
+                    onSignInClicked = {
+                        navigator?.replaceAll(SignInScreen())
                     },
-                    onCreateAccountClicked = {
-                        navigator?.replaceAll(CreateAccountScreen())
+                    onSignUpClicked = {
+                        navigator?.replaceAll(SignUpScreen())
                     }
                 )
             )

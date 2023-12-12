@@ -66,8 +66,8 @@ sealed class TutorialPage(
                 text = stringResource(MR.strings.tutorial_page_1_title),
                 color = styleSheet.colorScheme.colorTextPrimary,
                 style = textStyle.copy(
+                    fontWeight = FontWeight.W700,
                     fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
                     lineHeight = 24.sp
                 ),
                 textAlign = TextAlign.Start
@@ -120,8 +120,8 @@ sealed class TutorialPage(
                 text = stringResource(MR.strings.tutorial_page_2_title),
                 color = styleSheet.colorScheme.colorTextPrimary,
                 style = textStyle.copy(
+                    fontWeight = FontWeight.W700,
                     fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
                     lineHeight = 24.sp
                 ),
                 textAlign = TextAlign.Start
@@ -142,8 +142,8 @@ sealed class TutorialPage(
     )
 
     data class Page3(
-        val onLoginClicked: () -> Unit,
-        val onCreateAccountClicked: () -> Unit
+        val onSignInClicked: () -> Unit,
+        val onSignUpClicked: () -> Unit
     ) : TutorialPage(
         pageIndex = PageIndex.PAGE_3,
         background = {
@@ -183,8 +183,8 @@ sealed class TutorialPage(
                     text = stringResource(MR.strings.tutorial_page_3_title),
                     color = White,
                     style = textStyle.copy(
+                        fontWeight = FontWeight.W800,
                         fontSize = 35.sp,
-                        fontWeight = FontWeight.ExtraBold,
                         lineHeight = 42.sp
                     ),
                     textAlign = TextAlign.Start
@@ -194,7 +194,7 @@ sealed class TutorialPage(
         cardContent = {
             AppButton(
                 text = stringResource(MR.strings.tutorial_page_3_button_1),
-                onClick = onLoginClicked
+                onClick = onSignInClicked
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -202,7 +202,7 @@ sealed class TutorialPage(
             AppButton(
                 text = stringResource(MR.strings.tutorial_page_3_button_2),
                 backgroundColor = PaperHearts,
-                onClick = onCreateAccountClicked
+                onClick = onSignUpClicked
             )
         }
     )

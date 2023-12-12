@@ -1,3 +1,0 @@
-package presentation.screen.create_account
-
-data object CreateAccountUiState

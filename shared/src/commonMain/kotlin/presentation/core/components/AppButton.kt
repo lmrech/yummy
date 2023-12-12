@@ -1,17 +1,22 @@
 package presentation.core.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -19,44 +24,53 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.icerock.moko.resources.ImageResource
+import dev.icerock.moko.resources.compose.painterResource
 import presentation.theme.FieryRose
+import presentation.theme.Transparent
 import presentation.theme.White
 import rememberTextStyle
 
 @Composable
 fun AppButton(
-    modifier: Modifier = Modifier,
-    height: Dp = 56.dp,
+    modifier: Modifier = Modifier
+        .fillMaxWidth(),
+    enabled: Boolean = true,
+    elevation: Dp = 0.dp,
+    minHeight: Dp = 56.dp,
     backgroundColor: Color = FieryRose,
     borderRadius: Dp = 8.dp,
     contentAlignment: Alignment = Alignment.Center,
-    onClick: (() -> Unit)? = null,
+    onClick: () -> Unit,
     content: @Composable BoxScope.() -> Unit,
 ) {
-    Box(
+    BoxWithConstraints(
         modifier = modifier
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(
-                    height = height
-                )
-                .clip(
-                    shape = RoundedCornerShape(borderRadius)
-                )
-                .background(
-                    color = backgroundColor
-                )
-                .clickable(
-                    enabled = onClick != null,
-                    onClick = {
-                        onClick?.invoke()
-                    }
-                ),
-            contentAlignment = contentAlignment
+        Card(
+            shape = RoundedCornerShape(borderRadius),
+            elevation = elevation,
+            backgroundColor = Transparent
         ) {
-            content(this)
+            Box(
+                modifier = Modifier
+                    .defaultMinSize(
+                        minHeight = minHeight,
+                        minWidth = this.constraints.maxWidth.dp,
+                    )
+                    .background(
+                        color = backgroundColor.copy(
+                            alpha = if (enabled) 1f else 0.5f
+                        )
+                    )
+                    .clickable(
+                        enabled = enabled,
+                        onClick = onClick
+                    ),
+                contentAlignment = contentAlignment
+            ) {
+                content(this)
+            }
         }
     }
 }
@@ -72,25 +86,43 @@ fun AppButton(
         lineHeight = 20.sp
     ),
     textAllCaps: Boolean = true,
-    height: Dp = 56.dp,
+    icon: ImageResource? = null,
+    enabled: Boolean = true,
+    elevation: Dp = 0.dp,
+    minHeight: Dp = 56.dp,
     backgroundColor: Color = FieryRose,
     borderRadius: Dp = 8.dp,
     contentAlignment: Alignment = Alignment.Center,
-    onClick: (() -> Unit)? = null,
+    onClick: () -> Unit,
 ) {
     AppButton(
         modifier = modifier,
-        height = height,
+        enabled = enabled,
+        elevation = elevation,
+        minHeight = minHeight,
         backgroundColor = backgroundColor,
         borderRadius = borderRadius,
         contentAlignment = contentAlignment,
         onClick = onClick
     ) {
-        Text(
-            text = if (textAllCaps) text.uppercase() else text,
-            color = textColor,
-            style = textStyle,
-            textAlign = TextAlign.Start
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            icon?.let {
+                Image(
+                    painter = painterResource(it),
+                    contentDescription = null
+                )
+            }
+
+            Spacer(modifier = Modifier.width(11.dp))
+
+            Text(
+                text = if (textAllCaps) text.uppercase() else text,
+                color = textColor,
+                style = textStyle,
+                textAlign = TextAlign.Start
+            )
+        }
     }
 }
