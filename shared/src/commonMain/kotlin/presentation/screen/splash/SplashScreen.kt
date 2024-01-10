@@ -16,9 +16,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import org.koin.compose.koinInject
-import presentation.core.AppNavigationBar
 import presentation.core.AppScreen
-import presentation.core.AppStatusBar
+import presentation.core.AppSystemBar
 import presentation.theme.SchaussPink
 
 class SplashScreen(
@@ -38,8 +37,8 @@ class SplashScreen(
                 exit = fadeOut(),
             ) {
                 AppScreen(
-                    statusBar = AppStatusBar.Hidden,
-                    navigationBar = AppNavigationBar.Hidden
+                    statusBar = AppSystemBar.Hidden,
+                    navigationBar = AppSystemBar.Hidden
                 ) {
                     Box(
                         modifier = Modifier

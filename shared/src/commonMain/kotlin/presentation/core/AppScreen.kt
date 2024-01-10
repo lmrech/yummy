@@ -1,19 +1,18 @@
 package presentation.core
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import domain.platform.Platform
+import presentation.core.extensions.conditional
 import presentation.theme.StyleSheet
 import rememberPlatform
 import rememberStyleSheet
@@ -25,34 +24,28 @@ fun AppScreen(
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     styleSheet: StyleSheet = rememberStyleSheet(),
     platform: Platform = rememberPlatform(),
-    statusBar: AppStatusBar = AppStatusBar.Visible(
-        backgroundColor = styleSheet.colorScheme.colorBackground
-    ),
-    navigationBar: AppNavigationBar = AppNavigationBar.Visible(
-        backgroundColor = styleSheet.colorScheme.colorBackground
-    ),
+    statusBar: AppSystemBar = AppSystemBar.Visible,
+    navigationBar: AppSystemBar = AppSystemBar.Visible,
     content: @Composable ColumnScope.() -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        if (statusBar is AppStatusBar.Visible) {
-            Spacer(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(
-                        height = platform.insets.top
-                    )
-                    .background(
-                        color = statusBar.backgroundColor
-                    )
-            )
-        }
-
         Box(
             modifier = Modifier
-                .weight(1f)
+                .fillMaxSize()
+                .conditional(
+                    condition = statusBar is AppSystemBar.Visible
+                ) {
+                    statusBarsPadding()
+                }
+                .conditional(
+                    condition = navigationBar is AppSystemBar.Visible
+                ) {
+                    navigationBarsPadding()
+                }
+                .imePadding()
         ) {
             Column(
                 modifier = modifier,
@@ -62,28 +55,10 @@ fun AppScreen(
                 content(this)
             }
         }
-
-        if (navigationBar is AppNavigationBar.Visible) {
-            Spacer(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(
-                        height = platform.insets.bottom
-                    )
-                    .background(
-                        color = navigationBar.backgroundColor
-                    )
-            )
-        }
     }
 }
 
-sealed class AppStatusBar {
-    data class Visible(val backgroundColor: Color) : AppStatusBar()
-    data object Hidden : AppStatusBar()
-}
-
-sealed class AppNavigationBar {
-    data class Visible(val backgroundColor: Color) : AppNavigationBar()
-    data object Hidden : AppNavigationBar()
+sealed class AppSystemBar {
+    data object Visible : AppSystemBar()
+    data object Hidden : AppSystemBar()
 }

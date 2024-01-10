@@ -15,7 +15,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import presentation.core.AppScreen
-import presentation.core.AppStatusBar
+import presentation.core.AppSystemBar
 import presentation.screen.sign_in.SignInScreen
 import presentation.screen.sign_up.SignUpScreen
 import presentation.screen.tutorial.components.TutorialBackgroundGradient
@@ -72,7 +72,7 @@ class TutorialScreen : Screen {
         }
 
         AppScreen(
-            statusBar = AppStatusBar.Hidden
+            statusBar = AppSystemBar.Hidden
         ) {
             TutorialPageLayout(
                 pageCount = pagerState.pageCount,

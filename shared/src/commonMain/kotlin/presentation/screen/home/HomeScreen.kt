@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import org.koin.compose.koinInject
-import presentation.core.AppNavigationBar
 import presentation.core.AppScreen
+import presentation.core.AppSystemBar
 
 class HomeScreen : Screen {
     @Composable
@@ -19,7 +19,7 @@ class HomeScreen : Screen {
                 .verticalScroll(
                     state = rememberScrollState()
                 ),
-            navigationBar = AppNavigationBar.Hidden
+            navigationBar = AppSystemBar.Hidden
         ) {
 
         }
