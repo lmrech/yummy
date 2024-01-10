@@ -1,6 +1,7 @@
 package presentation.core.components
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,7 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -92,11 +93,16 @@ fun AppFloatingTextField(
     ) {
         AppFloatingTextField(
             modifier = Modifier
-                .onFocusEvent {
+                .onFocusChanged {
                     scope.launch {
+                        if (animation.isRunning) animation.stop()
+
                         animation.animateTo(
                             if (it.isFocused || value.isNotEmpty()) 1f else 0f,
-                            tween(80)
+                            tween(
+                                durationMillis = 150,
+                                easing = LinearEasing
+                            )
                         )
                     }
                 }

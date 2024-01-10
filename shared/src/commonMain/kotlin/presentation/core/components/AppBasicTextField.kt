@@ -14,7 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -59,7 +59,7 @@ fun AppBasicTextField(
         },
         modifier = modifier
             .bringIntoViewRequester(requester)
-            .onFocusEvent {
+            .onFocusChanged {
                 if (it.isFocused) {
                     coroutineScope.launch {
                         requester.bringIntoView()

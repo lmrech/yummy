@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -167,9 +168,7 @@ sealed class TutorialPage(
             ) {
                 Spacer(
                     modifier = Modifier
-                        .height(
-                            height = platform.insets.top
-                        )
+                        .navigationBarsPadding()
                 )
 
                 Spacer(
