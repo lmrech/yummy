@@ -25,7 +25,7 @@ import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 import presentation.core.AppScreen
 import presentation.core.components.AppButton
-import presentation.core.components.AppTextInput
+import presentation.core.components.AppTextField
 import presentation.core.components.AppleButton
 import presentation.core.components.FacebookButton
 import presentation.core.components.GoogleButton
@@ -67,7 +67,7 @@ class SignUpScreen : Screen {
 
             Spacer(modifier = Modifier.height(26.dp))
 
-            AppTextInput(
+            AppTextField(
                 value = uiState.fullNameInput,
                 onValueChange = {
                     viewModel.setFullNameInput(
@@ -79,12 +79,11 @@ class SignUpScreen : Screen {
                     autoCorrect = false
                 ),
                 label = stringResource(MR.strings.sign_up_full_name),
-                placeholder = stringResource(MR.strings.sign_up_full_name_placeholder)
             )
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            AppTextInput(
+            AppTextField(
                 value = uiState.emailInput,
                 onValueChange = {
                     viewModel.setEmailInput(
@@ -95,12 +94,11 @@ class SignUpScreen : Screen {
                     autoCorrect = false
                 ),
                 label = stringResource(MR.strings.sign_up_email),
-                placeholder = stringResource(MR.strings.sign_up_email_placeholder)
             )
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            AppTextInput(
+            AppTextField(
                 value = uiState.passwordInput,
                 onValueChange = {
                     viewModel.setPasswordInput(
@@ -111,13 +109,12 @@ class SignUpScreen : Screen {
                     autoCorrect = false
                 ),
                 label = stringResource(MR.strings.sign_up_password),
-                placeholder = stringResource(MR.strings.sign_up_password_placeholder),
                 visualTransformation = PasswordVisualTransformation()
             )
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            AppTextInput(
+            AppTextField(
                 value = uiState.confirmPasswordInput,
                 onValueChange = {
                     viewModel.setConfirmPasswordInput(
@@ -128,7 +125,6 @@ class SignUpScreen : Screen {
                     autoCorrect = false
                 ),
                 label = stringResource(MR.strings.sign_up_confirm_password),
-                placeholder = stringResource(MR.strings.sign_up_confirm_password_placeholder),
                 visualTransformation = PasswordVisualTransformation()
             )
 

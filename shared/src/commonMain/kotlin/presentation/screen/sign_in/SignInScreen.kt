@@ -24,7 +24,7 @@ import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 import presentation.core.AppScreen
 import presentation.core.components.AppButton
-import presentation.core.components.AppTextInput
+import presentation.core.components.AppTextField
 import presentation.core.components.AppleButton
 import presentation.core.components.FacebookButton
 import presentation.core.components.GoogleButton
@@ -64,7 +64,7 @@ class SignInScreen : Screen {
 
             Spacer(modifier = Modifier.height(26.dp))
 
-            AppTextInput(
+            AppTextField(
                 value = uiState.emailInput,
                 onValueChange = {
                     viewModel.setEmailInput(
@@ -74,13 +74,12 @@ class SignInScreen : Screen {
                 keyboardOptions = KeyboardOptions(
                     autoCorrect = false
                 ),
-                label = stringResource(MR.strings.sign_in_email),
-                placeholder = stringResource(MR.strings.sign_in_email_placeholder)
+                label = stringResource(MR.strings.sign_in_email)
             )
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            AppTextInput(
+            AppTextField(
                 value = uiState.passwordInput,
                 onValueChange = {
                     viewModel.setPasswordInput(
@@ -91,7 +90,6 @@ class SignInScreen : Screen {
                     autoCorrect = false
                 ),
                 label = stringResource(MR.strings.sign_in_password),
-                placeholder = stringResource(MR.strings.sign_in_password_placeholder),
                 visualTransformation = PasswordVisualTransformation()
             )
 

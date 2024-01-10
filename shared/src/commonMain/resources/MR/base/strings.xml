@@ -24,17 +24,11 @@
     <string name="sign_up_create_facebook_account">Criar conta com Facebook</string>
     <string name="sign_up_create_google_account">Criar conta com Google</string>
     <string name="sign_up_create_apple_account">Criar conta com Apple</string>
-    <string name="sign_up_full_name_placeholder">Fernanda Koch</string>
-    <string name="sign_up_email_placeholder">fernanda_koch@gmail.com</string>
-    <string name="sign_up_password_placeholder">*********</string>
-    <string name="sign_up_confirm_password_placeholder">*********</string>
 
 <!--    Sign In-->
     <string name="sign_in_title">Fazer Login</string>
     <string name="sign_in_email">E-mail</string>
-    <string name="sign_in_email_placeholder">fernanda_koch@gmail.com</string>
     <string name="sign_in_password">Senha</string>
-    <string name="sign_in_password_placeholder">*********</string>
     <string name="sign_in_enter">Entrar</string>
     <string name="sign_in_enter_with_facebook">Entrar com Facebook</string>
     <string name="sign_in_enter_with_google">Entrar com Google</string>
