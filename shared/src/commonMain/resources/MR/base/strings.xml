@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+
 <!--    General-->
+    <string name="general_app_name">Yummy</string>
     <string name="general_skip">Pular</string>
     <string name="general_next">Próximo</string>
     <string name="general_or">Ou</string>
@@ -10,7 +12,7 @@
     <string name="tutorial_page_1_description">Aqui você pode encontrar os restaurantes mais avaliados da cidade e escolher o ideal para sua fome</string>
     <string name="tutorial_page_2_title">Compartilhe sua experiência!</string>
     <string name="tutorial_page_2_description">Ajude amigos a encontrar os restaurantes que você mais gosta compartilhando um pouco da sua experiência</string>
-    <string name="tutorial_page_3_title">Bem-vindo(a) ao Yummy</string>
+    <string name="tutorial_page_3_title">Bem-vindo(a) ao</string>
     <string name="tutorial_page_3_button_1">Fazer login</string>
     <string name="tutorial_page_3_button_2">Criar uma conta</string>
 

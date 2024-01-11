@@ -50,6 +50,15 @@ sealed class AppFontFamily(
         )
     )
 
+    data object Galada : AppFontFamily(
+        fonts = listOf(
+            AppFont(
+                fontResource = MR.fonts.Galada.regular,
+                fontWeight = FontWeight.Normal,
+            ),
+        )
+    )
+
     @Composable
     fun toTextStyle(): TextStyle {
         return TextStyle(

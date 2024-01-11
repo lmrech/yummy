@@ -7,20 +7,24 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import presentation.core.components.AppButton
+import presentation.theme.AppFontFamily
 import presentation.theme.PaperHearts
 import presentation.theme.White
 import rememberPlatform
@@ -168,7 +172,7 @@ sealed class TutorialPage(
             ) {
                 Spacer(
                     modifier = Modifier
-                        .navigationBarsPadding()
+                        .statusBarsPadding()
                 )
 
                 Spacer(
@@ -179,13 +183,23 @@ sealed class TutorialPage(
                 )
 
                 Text(
-                    text = stringResource(MR.strings.tutorial_page_3_title),
+                    text = buildAnnotatedString {
+                        append(stringResource(MR.strings.tutorial_page_3_title) + " ")
+
+                        withStyle(
+                            style = SpanStyle(
+                                fontFamily = AppFontFamily.Galada.toTextStyle().fontFamily
+                            )
+                        ) {
+                            append(stringResource(MR.strings.general_app_name))
+                        }
+                    },
+                    fontSize = 35.sp,
+                    fontStyle = textStyle.fontStyle,
+                    fontWeight = FontWeight.W800,
+                    fontFamily = textStyle.fontFamily,
+                    lineHeight = 42.sp,
                     color = White,
-                    style = textStyle.copy(
-                        fontWeight = FontWeight.W800,
-                        fontSize = 35.sp,
-                        lineHeight = 42.sp
-                    ),
                     textAlign = TextAlign.Start
                 )
             }

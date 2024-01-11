@@ -34,8 +34,8 @@ fun AppTextField(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     isError: Boolean = false,
     label: String,
-    borderRadius: Dp = 8.dp,
-    ) {
+    borderRadius: Dp = 4.dp,
+) {
     Card(
         shape = RoundedCornerShape(
             size = borderRadius
