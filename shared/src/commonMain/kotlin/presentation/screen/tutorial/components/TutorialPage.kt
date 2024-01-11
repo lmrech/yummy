@@ -24,7 +24,10 @@ import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import presentation.core.components.AppButton
+import presentation.core.components.AppShadow
+import presentation.core.components.AppText
 import presentation.theme.AppFontFamily
+import presentation.theme.Black
 import presentation.theme.PaperHearts
 import presentation.theme.White
 import rememberPlatform
@@ -182,7 +185,7 @@ sealed class TutorialPage(
                         )
                 )
 
-                Text(
+                AppText(
                     text = buildAnnotatedString {
                         append(stringResource(MR.strings.tutorial_page_3_title) + " ")
 
@@ -194,13 +197,21 @@ sealed class TutorialPage(
                             append(stringResource(MR.strings.general_app_name))
                         }
                     },
-                    fontSize = 35.sp,
-                    fontStyle = textStyle.fontStyle,
-                    fontWeight = FontWeight.W800,
-                    fontFamily = textStyle.fontFamily,
-                    lineHeight = 42.sp,
+                    style = textStyle.copy(
+                        fontWeight = FontWeight.W800,
+                        fontSize = 35.sp,
+                        lineHeight = 42.sp
+                    ),
                     color = White,
-                    textAlign = TextAlign.Start
+                    textAlign = TextAlign.Start,
+                    shadow = AppShadow(
+                        color = Black.copy(
+                            alpha = 0.25f
+                        ),
+                        x = 0.dp,
+                        y = 4.dp,
+                        blur = 4.dp
+                    )
                 )
             }
         },

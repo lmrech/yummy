@@ -34,15 +34,15 @@ fun TutorialNextButton(
             .clip(
                 shape = RoundedCornerShape(20.dp)
             )
+            .clickable(
+                onClick = onClick
+            )
             .background(
                 color = FieryRose
             )
             .padding(
                 vertical = 8.dp,
                 horizontal = 11.dp
-            )
-            .clickable(
-                onClick = onClick
             )
     ) {
         Text(
