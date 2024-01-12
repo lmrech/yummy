@@ -1,6 +1,5 @@
 package presentation.screen.sign_up
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -18,10 +18,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -38,14 +43,13 @@ import presentation.core.components.override.AppTextField
 import presentation.core.components.override.AppTopBar
 import presentation.core.components.override.StatusBarVisibility
 import presentation.core.extensions.alphabetic
-import presentation.screen.sign_up.components.SignUpDisclaimer
 import presentation.screen.sign_up.components.SignUpSeparator
 import presentation.theme.PaperHearts
 import presentation.theme.White
+import presentation.theme.Zambezi
 import rememberTextStyle
 
 class SignUpScreen : Screen {
-    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     override fun Content() {
         val viewModel: SignUpViewModel = koinInject()
@@ -212,6 +216,71 @@ class SignUpScreen : Screen {
                 }
             }
         }
+    }
+
+    @Composable
+    fun SignUpDisclaimer(
+        onTermsOfServiceClicked: (String) -> Unit,
+        onPrivacyPolicyClicked: (String) -> Unit,
+        textStyle: TextStyle = rememberTextStyle()
+    ) {
+        val clickableTextStyle = SpanStyle(
+            textDecoration = TextDecoration.Underline,
+            color = PaperHearts
+        )
+
+        val annotatedString = buildAnnotatedString {
+            append("${stringResource(MR.strings.sign_up_by_signing_up_you_agree_with_our)} ")
+
+            pushStringAnnotation(
+                tag = ANNOTATION_TERMS_OF_SERVICE,
+                annotation = "https://google.com/terms"
+            )
+
+            withStyle(
+                style = clickableTextStyle
+            ) {
+                append(stringResource(MR.strings.sign_up_terms_of_service))
+            }
+
+            pop()
+
+            append(" ${stringResource(MR.strings.sign_up_and_the)} ")
+
+            pushStringAnnotation(
+                tag = ANNOTATION_PRIVACY_POLICY,
+                annotation = "https://google.com/policy"
+            )
+
+            withStyle(
+                style = clickableTextStyle
+            ) {
+                append(stringResource(MR.strings.sign_up_privacy_policy))
+            }
+
+            pop()
+
+            append(".")
+        }
+
+        ClickableText(
+            text = annotatedString,
+            onClick = { offset ->
+                annotatedString.getStringAnnotations(tag = ANNOTATION_PRIVACY_POLICY, start = offset, end = offset).firstOrNull()?.let {
+                    onTermsOfServiceClicked(it.item)
+                }
+
+                annotatedString.getStringAnnotations(tag = ANNOTATION_TERMS_OF_SERVICE, start = offset, end = offset).firstOrNull()?.let {
+                    onPrivacyPolicyClicked(it.item)
+                }
+            },
+            style = textStyle.copy(
+                fontWeight = FontWeight.W400,
+                fontSize = 13.sp,
+                lineHeight = 17.sp,
+                color = Zambezi
+            )
+        )
     }
 
     companion object {

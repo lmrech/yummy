@@ -191,7 +191,9 @@ sealed class TutorialPage(
 
                         withStyle(
                             style = SpanStyle(
-                                fontFamily = AppFontFamily.Galada.toTextStyle().fontFamily
+                                fontFamily = AppFontFamily.Galada.toTextStyle().fontFamily,
+                                fontWeight = FontWeight.W400,
+                                fontSize = 40.sp,
                             )
                         ) {
                             append(stringResource(MR.strings.general_app_name))
@@ -200,7 +202,7 @@ sealed class TutorialPage(
                     style = textStyle.copy(
                         fontWeight = FontWeight.W800,
                         fontSize = 35.sp,
-                        lineHeight = 42.sp
+                        lineHeight = 48.sp
                     ),
                     color = White,
                     textAlign = TextAlign.Start,
