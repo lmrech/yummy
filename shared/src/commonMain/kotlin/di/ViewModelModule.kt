@@ -1,7 +1,9 @@
 package di
 
 import org.koin.dsl.module
+import presentation.screen.dashboard.DashboardViewModel
 import presentation.screen.home.HomeViewModel
+import presentation.screen.profile.ProfileViewModel
 import presentation.screen.sign_in.SignInViewModel
 import presentation.screen.sign_up.SignUpViewModel
 import presentation.screen.splash.SplashViewModel
@@ -26,8 +28,16 @@ fun viewModelModule() = module {
     }
 
     viewModelDefinition {
-        HomeViewModel(
+        DashboardViewModel(
             getSettingsUseCase = get()
         )
+    }
+
+    viewModelDefinition {
+        HomeViewModel()
+    }
+
+    viewModelDefinition {
+        ProfileViewModel()
     }
 }

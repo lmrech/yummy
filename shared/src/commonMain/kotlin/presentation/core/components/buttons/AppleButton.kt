@@ -1,10 +1,10 @@
 
-package presentation.core.components
+package presentation.core.components.buttons
 
 import androidx.compose.runtime.Composable
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.stringResource
-import presentation.core.components.override.AppButton
+import presentation.core.components.AppButton
 import presentation.theme.Black
 
 @Composable

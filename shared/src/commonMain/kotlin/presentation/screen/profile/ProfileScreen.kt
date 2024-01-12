@@ -1,9 +1,9 @@
-package presentation.screen.home
+package presentation.screen.profile
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 
-class HomeScreen : Screen {
+class ProfileScreen : Screen {
     @Composable
     override fun Content() {
 

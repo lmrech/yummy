@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.sp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-import presentation.core.components.override.AppButton
-import presentation.core.components.override.AppShadow
-import presentation.core.components.override.AppText
+import presentation.core.components.AppButton
+import presentation.core.components.AppShadow
+import presentation.core.components.AppText
 import presentation.theme.AppFontFamily
 import presentation.theme.Black
 import presentation.theme.PaperHearts

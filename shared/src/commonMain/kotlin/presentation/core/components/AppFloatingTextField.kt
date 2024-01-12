@@ -1,4 +1,4 @@
-package presentation.core.components.override
+package presentation.core.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing

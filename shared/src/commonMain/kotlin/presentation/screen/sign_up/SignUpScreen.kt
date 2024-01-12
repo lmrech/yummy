@@ -35,15 +35,16 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
-import presentation.core.components.AppleButton
-import presentation.core.components.FacebookButton
-import presentation.core.components.GoogleButton
-import presentation.core.components.override.AppButton
-import presentation.core.components.override.AppScaffold
-import presentation.core.components.override.AppTextField
-import presentation.core.components.override.AppTopBar
-import presentation.core.components.override.StatusBarVisibility
+import presentation.core.components.buttons.AppleButton
+import presentation.core.components.buttons.FacebookButton
+import presentation.core.components.buttons.GoogleButton
+import presentation.core.components.AppButton
+import presentation.core.components.AppScaffold
+import presentation.core.components.AppTextField
+import presentation.core.components.AppTopBar
+import presentation.core.components.StatusBarVisibility
 import presentation.core.extensions.alphabetic
+import presentation.screen.dashboard.DashboardScreen
 import presentation.screen.sign_up.components.SignUpSeparator
 import presentation.theme.PaperHearts
 import presentation.theme.White
@@ -177,7 +178,7 @@ class SignUpScreen : Screen {
                     backgroundColor = PaperHearts,
                     textAllCaps = false
                 ) {
-                    // TODO().
+                    navigator?.replaceAll(DashboardScreen())
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))

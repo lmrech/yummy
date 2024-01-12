@@ -38,4 +38,11 @@
     <string name="sign_in_password">Senha</string>
     <string name="sign_in_enter">Entrar</string>
     <string name="sign_in_forgot_password">Esqueceu sua senha?</string>
+
+    <!--    Dashboard-->
+    <string name="dashboard_bottom_navigation_tab_home">Home</string>
+    <string name="dashboard_bottom_navigation_tab_restaurants">Restaurantes</string>
+    <string name="dashboard_bottom_navigation_tab_review">Fazer\nAvaliação</string>
+    <string name="dashboard_bottom_navigation_tab_friends">Amigos</string>
+    <string name="dashboard_bottom_navigation_tab_profile">Perfil</string>
 </resources>

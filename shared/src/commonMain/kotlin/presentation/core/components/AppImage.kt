@@ -1,4 +1,4 @@
-package presentation.core.components.override
+package presentation.core.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

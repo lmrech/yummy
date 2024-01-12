@@ -1,4 +1,4 @@
-package presentation.core.components.override
+package presentation.core.components
 
 import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.Spring

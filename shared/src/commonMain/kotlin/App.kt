@@ -23,9 +23,9 @@ import org.koin.core.definition.Definition
 import org.koin.core.definition.KoinDefinition
 import org.koin.core.module.Module
 import org.koin.core.qualifier.Qualifier
-import presentation.core.components.override.AppTransition
+import presentation.core.components.AppTransition
+import presentation.screen.dashboard.DashboardScreen
 import presentation.screen.splash.SplashScreen
-import presentation.screen.tutorial.TutorialScreen
 import presentation.theme.StyleSheet
 
 @Composable
@@ -40,7 +40,7 @@ fun App() {
         }
     ) {
         SplashScreen {
-            Navigator(TutorialScreen()) { navigator ->
+            Navigator(DashboardScreen()) { navigator ->
                 AppTransition(navigator) { screen ->
                     screen.Content()
                 }
