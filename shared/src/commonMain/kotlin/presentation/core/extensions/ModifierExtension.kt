@@ -20,8 +20,8 @@ inline fun Modifier.conditional(
 }
 
 @Composable
-fun Modifier.clickableContent(
-    onClick: () -> Unit,
+inline fun Modifier.clickableContent(
+    noinline onClick: () -> Unit,
     enabled: Boolean = true,
     onClickLabel: String? = null,
     role: Role? = null,
@@ -29,7 +29,7 @@ fun Modifier.clickableContent(
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
 
-    return Modifier
+    return this
         .graphicsLayer {
             alpha = if (isPressed) 0.5f else 1f
         }
