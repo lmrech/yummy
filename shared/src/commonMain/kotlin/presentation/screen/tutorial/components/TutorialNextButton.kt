@@ -1,6 +1,5 @@
 package presentation.screen.tutorial.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -8,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -58,9 +58,10 @@ fun TutorialNextButton(
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        Image(
+        Icon(
             painter = painterResource(MR.images.ic_tutorial_next),
-            contentDescription = null
+            contentDescription = null,
+            tint = White
         )
     }
 }

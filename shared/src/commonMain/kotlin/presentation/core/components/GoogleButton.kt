@@ -12,7 +12,7 @@ fun GoogleButton(
     text: String,
     onClick: () -> Unit
 ) {
-    AppButton(
+    presentation.core.components.override.AppButton(
         text = text,
         backgroundColor = White,
         elevation = 2.dp,

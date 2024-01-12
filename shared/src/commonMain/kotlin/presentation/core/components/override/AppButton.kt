@@ -1,4 +1,4 @@
-package presentation.core.components
+package presentation.core.components.override
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -67,10 +67,9 @@ fun AppButton(
                         enabled = enabled,
                         onClick = onClick
                     ),
-                contentAlignment = contentAlignment
-            ) {
-                content(this)
-            }
+                contentAlignment = contentAlignment,
+                content = content
+            )
         }
     }
 }

@@ -14,8 +14,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
-import presentation.core.AppScreen
-import presentation.core.AppSystemBar
+import presentation.core.components.override.AppScaffold
+import presentation.core.components.override.StatusBarVisibility
 import presentation.screen.sign_in.SignInScreen
 import presentation.screen.sign_up.SignUpScreen
 import presentation.screen.tutorial.components.TutorialBackgroundGradient
@@ -62,17 +62,17 @@ class TutorialScreen : Screen {
                 ),
                 TutorialPage.Page3(
                     onSignInClicked = {
-                        navigator?.replaceAll(SignInScreen())
+                        navigator?.push(SignInScreen())
                     },
                     onSignUpClicked = {
-                        navigator?.replaceAll(SignUpScreen())
+                        navigator?.push(SignUpScreen())
                     }
                 )
             )
         }
 
-        AppScreen(
-            statusBar = AppSystemBar.Hidden
+        AppScaffold(
+            statusBarVisibility = StatusBarVisibility.Hidden
         ) {
             TutorialPageLayout(
                 pageCount = pagerState.pageCount,

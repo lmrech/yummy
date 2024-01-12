@@ -22,9 +22,9 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
-import presentation.core.AppScreen
-import presentation.core.components.AppButton
-import presentation.core.components.AppTextField
+import presentation.core.components.override.AppScaffold
+import presentation.core.components.override.AppButton
+import presentation.core.components.override.AppTextField
 import presentation.core.components.AppleButton
 import presentation.core.components.FacebookButton
 import presentation.core.components.GoogleButton
@@ -40,7 +40,7 @@ class SignInScreen : Screen {
         val navigator = LocalNavigator.current
         val textStyle = rememberTextStyle()
 
-        AppScreen(
+        AppScaffold(
             modifier = Modifier
                 .verticalScroll(
                     state = rememberScrollState()
@@ -74,7 +74,7 @@ class SignInScreen : Screen {
                 keyboardOptions = KeyboardOptions(
                     autoCorrect = false
                 ),
-                label = stringResource(MR.strings.sign_in_email)
+                placeholder = stringResource(MR.strings.sign_in_email)
             )
 
             Spacer(modifier = Modifier.height(15.dp))
@@ -89,7 +89,7 @@ class SignInScreen : Screen {
                 keyboardOptions = KeyboardOptions(
                     autoCorrect = false
                 ),
-                label = stringResource(MR.strings.sign_in_password),
+                placeholder = stringResource(MR.strings.sign_in_password),
                 visualTransformation = PasswordVisualTransformation()
             )
 

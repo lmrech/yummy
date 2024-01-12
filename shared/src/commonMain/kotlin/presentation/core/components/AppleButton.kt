@@ -3,6 +3,7 @@ package presentation.core.components
 
 import androidx.compose.runtime.Composable
 import com.icerockdev.library.MR
+import presentation.core.components.override.AppButton
 import presentation.theme.Black
 
 @Composable

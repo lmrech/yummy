@@ -6,20 +6,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import org.koin.compose.koinInject
-import presentation.core.AppScreen
-import presentation.core.AppSystemBar
+import presentation.core.components.override.AppScaffold
 
 class HomeScreen : Screen {
     @Composable
     override fun Content() {
         val viewModel: HomeViewModel = koinInject()
 
-        AppScreen(
+        AppScaffold(
             modifier = Modifier
                 .verticalScroll(
                     state = rememberScrollState()
-                ),
-            navigationBar = AppSystemBar.Hidden
+                )
         ) {
 
         }

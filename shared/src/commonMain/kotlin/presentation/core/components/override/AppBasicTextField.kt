@@ -1,4 +1,4 @@
-package presentation.core.components
+package presentation.core.components.override
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.interaction.MutableInteractionSource

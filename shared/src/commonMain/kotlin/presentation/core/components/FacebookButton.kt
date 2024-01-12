@@ -9,7 +9,7 @@ fun FacebookButton(
     text: String,
     onClick: () -> Unit
 ) {
-    AppButton(
+    presentation.core.components.override.AppButton(
         text = text,
         backgroundColor = Azul,
         icon = MR.images.ic_sign_up_facebook,

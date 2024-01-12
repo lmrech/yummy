@@ -1,4 +1,4 @@
-package presentation.core.components
+package presentation.core.components.override
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -8,15 +8,20 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Card
+import androidx.compose.material.TextFieldColors
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import presentation.theme.AmericanSilver
+import presentation.theme.EerieBlack
+import presentation.theme.HardCoal
 import presentation.theme.Transparent
+import presentation.theme.WhiteSmoke
 
 @Composable
 fun AppTextField(
@@ -24,6 +29,17 @@ fun AppTextField(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    colors: TextFieldColors = TextFieldDefaults.textFieldColors(
+        textColor = EerieBlack,
+        disabledTextColor = HardCoal.copy(
+            alpha = 0.5f
+        ),
+        placeholderColor = HardCoal,
+        backgroundColor = Color.Transparent,
+        focusedIndicatorColor = Color.Transparent,
+        unfocusedIndicatorColor = Color.Transparent,
+        disabledIndicatorColor = Color.Transparent
+    ),
     readOnly: Boolean = false,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -33,7 +49,7 @@ fun AppTextField(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     isError: Boolean = false,
-    label: String,
+    placeholder: String,
     borderRadius: Dp = 4.dp,
 ) {
     Card(
@@ -46,9 +62,7 @@ fun AppTextField(
         Box(
             modifier = Modifier
                 .background(
-                    color = AmericanSilver.copy(
-                        alpha = 0.2f
-                    )
+                    color = WhiteSmoke
                 )
                 .padding(
                     vertical = 6.dp,
@@ -70,7 +84,8 @@ fun AppTextField(
                 visualTransformation = visualTransformation,
                 interactionSource = interactionSource,
                 isError = isError,
-                label = label,
+                placeholder = placeholder,
+                colors = colors
             )
         }
     }

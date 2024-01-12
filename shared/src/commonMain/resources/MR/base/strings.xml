@@ -6,6 +6,7 @@
     <string name="general_skip">Pular</string>
     <string name="general_next">Próximo</string>
     <string name="general_or">Ou</string>
+    <string name="general_back">Voltar</string>
 
 <!--    Tutorial-->
     <string name="tutorial_page_1_title">Procurando onde comer?</string>
@@ -17,7 +18,7 @@
     <string name="tutorial_page_3_button_2">Criar uma conta</string>
 
 <!--    Sign Up-->
-    <string name="sign_up_title">Criar uma nova conta</string>
+    <string name="sign_up_title">Criar Conta</string>
     <string name="sign_up_full_name">Nome Completo</string>
     <string name="sign_up_email">E-mail</string>
     <string name="sign_up_password">Senha</string>

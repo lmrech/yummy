@@ -16,10 +16,11 @@ import cafe.adriel.voyager.core.screen.Screen
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import org.koin.compose.koinInject
-import presentation.core.AppScreen
-import presentation.core.AppSystemBar
-import presentation.core.components.AppImage
-import presentation.core.components.AppShadow
+import presentation.core.components.override.AppImage
+import presentation.core.components.override.AppScaffold
+import presentation.core.components.override.AppShadow
+import presentation.core.components.override.NavigationBarVisibility
+import presentation.core.components.override.StatusBarVisibility
 import presentation.screen.splash.components.SplashLogoBackground
 import presentation.theme.PaperHearts
 import presentation.theme.SchaussPink
@@ -40,9 +41,9 @@ class SplashScreen(
                 enter = fadeIn(),
                 exit = fadeOut(),
             ) {
-                AppScreen(
-                    statusBar = AppSystemBar.Hidden,
-                    navigationBar = AppSystemBar.Hidden
+                AppScaffold(
+                    statusBarVisibility = StatusBarVisibility.Hidden,
+                    navigationBarVisibility = NavigationBarVisibility.Hidden
                 ) {
                     Box(
                         modifier = Modifier

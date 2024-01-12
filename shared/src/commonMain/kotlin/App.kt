@@ -11,7 +11,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Density
 import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.transitions.SlideTransition
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import di.serviceModule
 import di.useCaseModule
@@ -24,6 +23,7 @@ import org.koin.core.definition.Definition
 import org.koin.core.definition.KoinDefinition
 import org.koin.core.module.Module
 import org.koin.core.qualifier.Qualifier
+import presentation.core.components.override.AppTransition
 import presentation.screen.splash.SplashScreen
 import presentation.screen.tutorial.TutorialScreen
 import presentation.theme.StyleSheet
@@ -41,7 +41,7 @@ fun App() {
     ) {
         SplashScreen {
             Navigator(TutorialScreen()) { navigator ->
-                SlideTransition(navigator) { screen ->
+                AppTransition(navigator) { screen ->
                     screen.Content()
                 }
             }

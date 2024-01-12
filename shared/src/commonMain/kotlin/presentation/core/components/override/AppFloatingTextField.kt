@@ -1,4 +1,4 @@
-package presentation.core.components
+package presentation.core.components.override
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
-import presentation.theme.DeadPixel
 import rememberTextStyle
 
 @Composable
@@ -42,11 +41,15 @@ fun AppFloatingTextField(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
     readOnly: Boolean = false,
     textStyle: TextStyle = rememberTextStyle().copy(
         fontWeight = FontWeight.W400,
         fontSize = 16.sp,
-        lineHeight = 21.sp
+        lineHeight = 21.sp,
+        color = colors.textColor(
+            enabled = enabled
+        ).value
     ),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -58,18 +61,24 @@ fun AppFloatingTextField(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     cursorBrush: Brush = SolidColor(Color.Black),
     isError: Boolean = false,
-    label: String,
+    placeholder: String,
     contentPadding: PaddingValues = PaddingValues(0.dp),
     minHeight: Dp = 44.dp
 ) {
     val labelTextStyle1 = textStyle.copy(
-        fontWeight = FontWeight.W600
+        fontWeight = FontWeight.W600,
+        color = colors.placeholderColor(
+            enabled = enabled
+        ).value
     )
 
     val labelTextStyle2 = textStyle.copy(
         fontWeight = FontWeight.W600,
         fontSize = 12.sp,
-        lineHeight = 18.sp
+        lineHeight = 18.sp,
+        color = colors.placeholderColor(
+            enabled = enabled
+        ).value
     )
 
     val animation = remember {
@@ -124,20 +133,11 @@ fun AppFloatingTextField(
             isError = isError,
             label = @Composable {
                 Text(
-                    text = label,
-                    color = DeadPixel,
+                    text = placeholder,
                     style = labelTextStyle
                 )
             },
-            colors = TextFieldDefaults.textFieldColors(
-                textColor = DeadPixel,
-                disabledTextColor = DeadPixel,
-                placeholderColor = DeadPixel,
-                backgroundColor = Color.Transparent,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                disabledIndicatorColor = Color.Transparent
-            ),
+            colors = colors,
             contentPadding = contentPadding
         )
     }
@@ -150,6 +150,7 @@ fun AppFloatingTextField(
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
     readOnly: Boolean = false,
     textStyle: TextStyle = TextStyle.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -166,7 +167,6 @@ fun AppFloatingTextField(
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
-    colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
     contentPadding: PaddingValues =
         if (label == null) {
             TextFieldDefaults.textFieldWithoutLabelPadding()
