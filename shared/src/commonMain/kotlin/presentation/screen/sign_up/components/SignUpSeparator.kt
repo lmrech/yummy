@@ -1,5 +1,6 @@
 package presentation.screen.sign_up.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -18,13 +19,16 @@ import rememberTextStyle
 
 @Composable
 fun SignUpSeparator(
+    modifier: Modifier = Modifier,
     text: String,
     color: Color = HardCoal
 ) {
     val textStyle = rememberTextStyle()
 
     Row(
-        verticalAlignment = Alignment.CenterVertically
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
         Divider(
             modifier = Modifier.width(100.dp),

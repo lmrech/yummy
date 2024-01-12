@@ -37,4 +37,5 @@
     <string name="sign_in_email">E-mail</string>
     <string name="sign_in_password">Senha</string>
     <string name="sign_in_enter">Entrar</string>
+    <string name="sign_in_forgot_password">Esqueceu sua senha?</string>
 </resources>

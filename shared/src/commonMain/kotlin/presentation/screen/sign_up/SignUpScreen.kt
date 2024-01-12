@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -103,8 +104,7 @@ class SignUpScreen : Screen {
                     .background(
                         color = White
                     )
-                    .padding(22.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .padding(22.dp)
             ) {
                 Spacer(modifier = Modifier.height(15.dp))
 
@@ -194,6 +194,8 @@ class SignUpScreen : Screen {
                 Spacer(modifier = Modifier.height(20.dp))
 
                 SignUpSeparator(
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     text = stringResource(MR.strings.general_or)
                 )
 
