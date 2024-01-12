@@ -25,9 +25,10 @@ import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
+import presentation.core.components.AppBottomNavigationButtonItem
+import presentation.core.components.AppBottomNavigationItem
+import presentation.core.components.AppBottomNavigationTabItem
 import presentation.core.components.AppScaffold
-import presentation.core.components.AppTab
-import presentation.core.components.AppTabNavigationItem
 import presentation.core.components.NavigationBarVisibility
 import presentation.core.components.StatusBarVisibility
 import presentation.screen.home.HomeScreen
@@ -40,34 +41,33 @@ import presentation.theme.White
 class DashboardScreen : Screen {
     @Composable
     override fun Content() {
-        val homeTab = AppTab(
+        val homeTab = AppBottomNavigationItem.Tab(
             index = 0,
             stringResource = MR.strings.dashboard_bottom_navigation_tab_home,
             imageResource = MR.images.ic_bottom_navigation_tab_profile,
             content = HomeScreen().Content()
         )
 
-        val restaurantsTab = AppTab(
+        val restaurantsTab = AppBottomNavigationItem.Tab(
             index = 1,
             stringResource = MR.strings.dashboard_bottom_navigation_tab_restaurants,
             imageResource = MR.images.ic_bottom_navigation_tab_restaurants,
             content = ProfileScreen().Content()
         )
 
-        val reviewTab = AppTab(
+        val reviewTab = AppBottomNavigationItem.Button(
             index = 2,
-            stringResource = MR.strings.dashboard_bottom_navigation_tab_review,
-            content = ProfileScreen().Content()
+            stringResource = MR.strings.dashboard_bottom_navigation_tab_review
         )
 
-        val friendsTab = AppTab(
+        val friendsTab = AppBottomNavigationItem.Tab(
             index = 3,
             stringResource = MR.strings.dashboard_bottom_navigation_tab_friends,
             imageResource = MR.images.ic_bottom_navigation_tab_friends,
             content = ProfileScreen().Content()
         )
 
-        val profileTab = AppTab(
+        val profileTab = AppBottomNavigationItem.Tab(
             index = 4,
             stringResource = MR.strings.dashboard_bottom_navigation_tab_profile,
             imageResource = MR.images.ic_bottom_navigation_tab_profile,
@@ -87,7 +87,7 @@ class DashboardScreen : Screen {
         }
 
         TabNavigator(
-            tab = tabs.first()
+            tab = homeTab
         ) {
             AppScaffold(
                 statusBarVisibility = StatusBarVisibility.Hidden,
@@ -119,7 +119,22 @@ class DashboardScreen : Screen {
                             verticalAlignment = Alignment.Bottom
                         ) {
                             tabs.forEach {
-                                AppTabNavigationItem(it)
+                                when (it) {
+                                    is AppBottomNavigationItem.Tab -> {
+                                        AppBottomNavigationTabItem(
+                                            item = it
+                                        )
+                                    }
+
+                                    is AppBottomNavigationItem.Button -> {
+                                        AppBottomNavigationButtonItem(
+                                            item = it,
+                                            onClick = { index ->
+                                                // TODO().
+                                            }
+                                        )
+                                    }
+                                }
                             }
                         }
 
