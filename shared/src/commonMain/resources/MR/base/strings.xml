@@ -7,6 +7,9 @@
     <string name="general_next">Próximo</string>
     <string name="general_or">Ou</string>
     <string name="general_back">Voltar</string>
+    <string name="general_continue_with_facebook_account">Continuar com Facebook</string>
+    <string name="general_continue_with_google_account">Continuar com Google</string>
+    <string name="general_continue_with_apple_account">Continuar com Apple</string>
 
 <!--    Tutorial-->
     <string name="tutorial_page_1_title">Procurando onde comer?</string>
@@ -19,21 +22,19 @@
 
 <!--    Sign Up-->
     <string name="sign_up_title">Criar Conta</string>
-    <string name="sign_up_full_name">Nome Completo</string>
+    <string name="sign_up_your_name">Seu Nome</string>
     <string name="sign_up_email">E-mail</string>
     <string name="sign_up_password">Senha</string>
     <string name="sign_up_confirm_password">Confirmar Senha</string>
-    <string name="sign_up_create_account">Criar conta</string>
-    <string name="sign_up_create_facebook_account">Criar conta com Facebook</string>
-    <string name="sign_up_create_google_account">Criar conta com Google</string>
-    <string name="sign_up_create_apple_account">Criar conta com Apple</string>
+    <string name="sign_up_create_account">Criar Conta</string>
+    <string name="sign_up_by_signing_up_you_agree_with_our">Ao se cadastrar, você concorda com os</string>
+    <string name="sign_up_terms_of_service">Termos de Serviço</string>
+    <string name="sign_up_and_the">e a</string>
+    <string name="sign_up_privacy_policy">Política de Privacidade</string>
 
-<!--    Sign In-->
+    <!--    Sign In-->
     <string name="sign_in_title">Fazer Login</string>
     <string name="sign_in_email">E-mail</string>
     <string name="sign_in_password">Senha</string>
     <string name="sign_in_enter">Entrar</string>
-    <string name="sign_in_enter_with_facebook">Entrar com Facebook</string>
-    <string name="sign_in_enter_with_google">Entrar com Google</string>
-    <string name="sign_in_enter_with_apple">Entrar com Apple</string>
 </resources>

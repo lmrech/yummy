@@ -22,12 +22,12 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
-import presentation.core.components.override.AppScaffold
-import presentation.core.components.override.AppButton
-import presentation.core.components.override.AppTextField
 import presentation.core.components.AppleButton
 import presentation.core.components.FacebookButton
 import presentation.core.components.GoogleButton
+import presentation.core.components.override.AppButton
+import presentation.core.components.override.AppScaffold
+import presentation.core.components.override.AppTextField
 import presentation.screen.sign_up.components.SignUpSeparator
 import presentation.theme.Black
 import rememberTextStyle
@@ -110,25 +110,19 @@ class SignInScreen : Screen {
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            FacebookButton(
-                text = stringResource(MR.strings.sign_in_enter_with_facebook)
-            ) {
+            FacebookButton {
                 // TODO().
             }
 
             Spacer(modifier = Modifier.height(21.dp))
 
-            GoogleButton(
-                text = stringResource(MR.strings.sign_in_enter_with_google)
-            ) {
+            GoogleButton {
                 // TODO().
             }
 
             Spacer(modifier = Modifier.height(21.dp))
 
-            AppleButton(
-                text = stringResource(MR.strings.sign_in_enter_with_apple)
-            ) {
+            AppleButton {
                 // TODO().
             }
         }

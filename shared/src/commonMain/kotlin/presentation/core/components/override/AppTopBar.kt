@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-import presentation.core.extensions.clickableContent
+import presentation.core.extensions.clickableAlpha
 import presentation.theme.White
 import rememberTextStyle
 
@@ -45,7 +45,7 @@ fun AppTopBar(
         start = {
             Row(
                 modifier = Modifier
-                    .clickableContent(
+                    .clickableAlpha(
                         onClick = onBackPressed
                     ),
                 verticalAlignment = Alignment.CenterVertically

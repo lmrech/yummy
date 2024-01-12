@@ -38,6 +38,7 @@ import presentation.core.components.override.AppTextField
 import presentation.core.components.override.AppTopBar
 import presentation.core.components.override.StatusBarVisibility
 import presentation.core.extensions.alphabetic
+import presentation.screen.sign_up.components.SignUpDisclaimer
 import presentation.screen.sign_up.components.SignUpSeparator
 import presentation.theme.PaperHearts
 import presentation.theme.White
@@ -98,12 +99,11 @@ class SignUpScreen : Screen {
                     .background(
                         color = White
                     )
-                    .padding(
-                        vertical = 34.dp,
-                        horizontal = 22.dp
-                    ),
+                    .padding(22.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Spacer(modifier = Modifier.height(15.dp))
+
                 AppTextField(
                     value = uiState.fullNameInput,
                     onValueChange = {
@@ -115,7 +115,7 @@ class SignUpScreen : Screen {
                         capitalization = KeyboardCapitalization.Words,
                         autoCorrect = false
                     ),
-                    placeholder = stringResource(MR.strings.sign_up_full_name),
+                    placeholder = stringResource(MR.strings.sign_up_your_name),
                 )
 
                 Spacer(modifier = Modifier.height(15.dp))
@@ -165,46 +165,57 @@ class SignUpScreen : Screen {
                     visualTransformation = PasswordVisualTransformation()
                 )
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 AppButton(
                     text = stringResource(MR.strings.sign_up_create_account),
                     enabled = uiState.isValid(),
                     backgroundColor = PaperHearts,
+                    textAllCaps = false
                 ) {
                     // TODO().
                 }
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(20.dp))
+
+                SignUpDisclaimer(
+                    onTermsOfServiceClicked = {
+                        // TODO().
+                    },
+                    onPrivacyPolicyClicked = {
+                        // TODO().
+                    }
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
 
                 SignUpSeparator(
                     text = stringResource(MR.strings.general_or)
                 )
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                FacebookButton(
-                    text = stringResource(MR.strings.sign_up_create_facebook_account)
-                ) {
+                FacebookButton {
                     // TODO().
                 }
 
-                Spacer(modifier = Modifier.height(21.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                GoogleButton(
-                    text = stringResource(MR.strings.sign_up_create_google_account)
-                ) {
+                GoogleButton {
                     // TODO().
                 }
 
-                Spacer(modifier = Modifier.height(21.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                AppleButton(
-                    text = stringResource(MR.strings.sign_up_create_apple_account)
-                ) {
+                AppleButton {
                     // TODO().
                 }
             }
         }
+    }
+
+    companion object {
+        const val ANNOTATION_TERMS_OF_SERVICE = "ANNOTATION_TERMS_OF_SERVICE"
+        const val ANNOTATION_PRIVACY_POLICY = "ANNOTATION_PRIVACY_POLICY"
     }
 }

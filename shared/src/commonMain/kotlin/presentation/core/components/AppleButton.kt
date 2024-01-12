@@ -3,12 +3,13 @@ package presentation.core.components
 
 import androidx.compose.runtime.Composable
 import com.icerockdev.library.MR
+import dev.icerock.moko.resources.compose.stringResource
 import presentation.core.components.override.AppButton
 import presentation.theme.Black
 
 @Composable
 fun AppleButton(
-    text: String,
+    text: String = stringResource(MR.strings.general_continue_with_apple_account),
     onClick: () -> Unit
 ) {
     AppButton(

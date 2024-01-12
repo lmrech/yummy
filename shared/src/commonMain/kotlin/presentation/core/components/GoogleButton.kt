@@ -4,12 +4,13 @@ package presentation.core.components
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.icerockdev.library.MR
+import dev.icerock.moko.resources.compose.stringResource
 import presentation.theme.ShadesOn
 import presentation.theme.White
 
 @Composable
 fun GoogleButton(
-    text: String,
+    text: String = stringResource(MR.strings.general_continue_with_google_account),
     onClick: () -> Unit
 ) {
     presentation.core.components.override.AppButton(
