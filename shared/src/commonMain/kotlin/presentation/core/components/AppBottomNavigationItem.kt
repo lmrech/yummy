@@ -84,7 +84,9 @@ fun RowScope.AppBottomNavigationItem(
                 onClick = onClick
             )
             .weight(1f)
-            .padding(9.dp),
+            .padding(
+                vertical = 9.dp
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
         content = content
     )
