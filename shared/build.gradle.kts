@@ -42,6 +42,9 @@ kotlin {
                 // Koin
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
+
+                // Ktor
+                implementation(libs.ktor.client.core)
             }
         }
         val androidMain by getting {
@@ -51,7 +54,11 @@ kotlin {
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.1")
 
+                // Koin
                 implementation(libs.koin.android)
+
+                // Ktor
+                implementation(libs.ktor.client.okhttp)
             }
         }
         val iosX64Main by getting
@@ -62,6 +69,11 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+
+            dependencies {
+                // Ktor
+                implementation(libs.ktor.client.ios)
+            }
         }
     }
 }

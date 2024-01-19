@@ -5,7 +5,10 @@ import domain.user.UserService
 import org.koin.dsl.module
 
 fun serviceModule() = module {
-    val userService: UserService = UserRepository()
-
-    single { userService }
+    single {
+        val userService: UserService = UserRepository(
+            userApi = get()
+        )
+        userService
+    }
 }

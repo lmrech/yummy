@@ -4,6 +4,7 @@ mvvm-core = "0.13.1"
 koin = "3.4.3"
 koin-compose = "1.0.4"
 resources = "0.23.0"
+ktor = "2.2.4"
 
 [libraries]
 voyager-navigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "voyager" }
@@ -17,6 +18,10 @@ resources-compose = { group = "dev.icerock.moko", name = "resources-compose", ve
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin-compose" }
+
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-ios = { group = "io.ktor", name = "ktor-client-ios", version.ref = "ktor" }
 
 [plugins]
 

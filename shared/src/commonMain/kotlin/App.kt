@@ -12,6 +12,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Density
 import cafe.adriel.voyager.navigator.Navigator
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import di.apiModule
 import di.serviceModule
 import di.useCaseModule
 import di.viewModelModule
@@ -33,6 +34,7 @@ fun App() {
     KoinApplication(
         application = {
             modules(
+                apiModule(),
                 serviceModule(),
                 useCaseModule(),
                 viewModelModule()

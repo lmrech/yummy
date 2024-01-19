@@ -5,6 +5,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class SplashViewModel : ViewModel() {
@@ -14,11 +15,11 @@ class SplashViewModel : ViewModel() {
     init {
         viewModelScope.launch {
             delay(2000L)
-            _uiState.tryEmit(
-                uiState.value.copy(
+            _uiState.update {
+                it.copy(
                     isVisible = false
                 )
-            )
+            }
         }
     }
 }

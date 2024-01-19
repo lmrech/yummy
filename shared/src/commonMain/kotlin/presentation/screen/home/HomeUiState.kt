@@ -1,3 +1,7 @@
 package presentation.screen.home
 
-data object HomeUiState
+import presentation.core.extensions.emptyString
+
+data class HomeUiState(
+    val status: String = emptyString()
+)

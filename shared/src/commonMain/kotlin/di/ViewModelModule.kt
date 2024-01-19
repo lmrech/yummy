@@ -34,7 +34,9 @@ fun viewModelModule() = module {
     }
 
     viewModelDefinition {
-        HomeViewModel()
+        HomeViewModel(
+            getProductsUseCase = get()
+        )
     }
 
     viewModelDefinition {
